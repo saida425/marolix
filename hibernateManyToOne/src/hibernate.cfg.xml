@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+       
+        <property name="hbm2ddl.import_files">db_create.sql</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3307/company</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">root</property>
+        <property name="hbm2ddl.auto">create</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+       	
+		<property name="connection.release_mode">after_statement</property>
+		<property name="transaction.flush_before_completion">true</property>
+	
+		<!-- Use Thread local contextual sessions -->
+		<property name="hibernate.current_session_context_class">
+			thread
+		</property>
+	
+		<!-- Disable the second-level cache  -->
+		<property name="hibernate.cache.provider_class">
+			org.hibernate.cache.NoCacheProvider
+		</property>
+		
+		<property name="hibernate.show_sql">true</property>
+		
+		<!-- Mappings -->
+			<mapping class="com.demo.model.Address" />
+		    <mapping class="com.demo.model.Student" />
+
+    </session-factory>
+</hibernate-configuration>
